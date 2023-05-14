@@ -16,6 +16,11 @@ public class StanzaMagica extends Stanza{
 	/*
 	 * Costruttore principale con soglia 3 default
 	 */
+	public StanzaMagica(String nome) {
+		super(nome);
+		this.contatoreAttrezziPosati = 0;
+		this.sogliaMagica = 3;
+	}
 	
 	/*
 	 * Costruttore con soglia a piacimento

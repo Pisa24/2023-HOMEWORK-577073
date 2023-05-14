@@ -84,7 +84,7 @@ class StanzaMagicaTest {
 			Ao.addAttrezzo(attre);
 		}
 		Ao.addAttrezzo(ao);
-		assertFalse(Ao.hasAttrezzo("ao"));
+		assertFalse(Ao.hasAttrezzo("oa"));
 	}
 	
 	

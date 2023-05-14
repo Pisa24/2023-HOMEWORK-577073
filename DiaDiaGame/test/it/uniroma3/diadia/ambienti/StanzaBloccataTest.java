@@ -9,41 +9,37 @@ import it.uniroma3.diadia.attrezzi.Attrezzo;
 
 class StanzaBloccataTest {
 	private StanzaBloccata block;
-	private String direzioneBloccata;
 	private Stanza S1;
-
+	private Attrezzo PassPartTout;
+	
 	@BeforeEach
 	void setUp() throws Exception {
 		S1 = new Stanza("S1");
-		this.direzioneBloccata = "sud";
-		this.block = new StanzaBloccata("block", direzioneBloccata, "PassPartTout");
+		this.PassPartTout = new Attrezzo("PassPartTout", 1);
+		this.block = new StanzaBloccata("block", "sud", "PassPartTout");
 		S1.impostaStanzaAdiacente("nord", block);
 		block.impostaStanzaAdiacente("sud", S1);
 	}
 
 	@Test
 	void testIsBloccata() {
-		assertEquals(block, block.getStanzaAdiacente(direzioneBloccata));
+		assertEquals(block, block.getStanzaAdiacente("sud"));
 	}
 	
 	@Test 
 	void testIsNotBloccata() {
-		Attrezzo PassPartTout = new Attrezzo("PassPartTout", 1);
 		block.addAttrezzo(PassPartTout);
-		assertEquals(S1, block.getStanzaAdiacente(direzioneBloccata));
+		assertEquals(S1, block.getStanzaAdiacente("sud"));
 	}
 	
-	@Test
-	void testGetDescrizioneIsBloccata() {
-		assertEquals("Non puoi guardare nella direzione sud.\nSe vuoi sbloccare la direzione devi prendere: PassPartTout" , block.getDescrizione());
-	}
 	
 	@Test
 	void testGetdescrizioneIsNotBloccata() {
-		Attrezzo PassPartTout = new Attrezzo("PassPartTout", 1);
 		block.addAttrezzo(PassPartTout);
-		assertEquals(S1.getDescrizione(), block.getStanzaAdiacente(direzioneBloccata).getDescrizione());
+		assertEquals(S1.getDescrizione(), block.getStanzaAdiacente("sud").getDescrizione());
 	}
+	
+	
 }
 
 

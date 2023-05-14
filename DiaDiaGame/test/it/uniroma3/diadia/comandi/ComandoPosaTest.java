@@ -1,14 +1,14 @@
 package it.uniroma3.diadia.comandi;
 
 import static org.junit.jupiter.api.Assertions.*;
-
-import org.junit.After;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import it.uniroma3.diadia.IO;
 import it.uniroma3.diadia.IOConsole;
 import it.uniroma3.diadia.Partita;
+import it.uniroma3.diadia.ambienti.Labirinto;
+import it.uniroma3.diadia.ambienti.Stanza;
 import it.uniroma3.diadia.attrezzi.Attrezzo;
 
 class ComandoPosaTest {
@@ -16,33 +16,27 @@ class ComandoPosaTest {
 	private Attrezzo att;
 	private Comando com;
 	private IO io;
-
+	private Labirinto l;
+	
 	@BeforeEach
 	void setUp() throws Exception {
-		p = new Partita();
+		Stanza s = new Stanza("stanza");
+		l = Labirinto.newBuilder()
+				.addStanzaIniziale("stanza")
+				.getLabirinto();
+		p = new Partita(l);
+		p.setStanzaCorrente(s);
 		att = new Attrezzo("Attrezzo", 1);
-		com = new ComandoPosa("");
+		com = new ComandoPosa();
 		io = new IOConsole();
 		com.setIo(io);
 	}
 
-	@After
-	public void tearDown() throws Exception {
-	}
-
-	public boolean attrezzoPresente(String s) {
-		if(p.getGiocatore().getBorsa().hasAttrezzo(s))
-			return true;
-		else
-			return false;
-	}
-
 	@Test
 	void testAttrezzoNonPresente() {
-		p.getGiocatore().getBorsa().addAttrezzo(att);
-		com.setParametro("");
+		com.setParametro("Attrezzo");
 		com.esegui(p);
-		assertFalse(attrezzoPresente(""));
+		assertFalse(p.getGiocatore().getBorsa().hasAttrezzo("Attrezzo"));
 	}
 
 	@Test
@@ -50,7 +44,8 @@ class ComandoPosaTest {
 		p.getGiocatore().getBorsa().addAttrezzo(att);
 		com.setParametro("Attrezzo");
 		com.esegui(p);
-		assertFalse(attrezzoPresente("Attrezzo"));
+		assertFalse(p.getGiocatore().getBorsa().hasAttrezzo("Attrezzo"));
+		
 	}
 	
 	@Test
@@ -58,7 +53,7 @@ class ComandoPosaTest {
 		p.getGiocatore().getBorsa().addAttrezzo(att);
 		com.setParametro("bagaglio");
 		com.esegui(p);
-		assertTrue(attrezzoPresente("Attrezzo"));
+		assertTrue(p.getGiocatore().getBorsa().hasAttrezzo("Attrezzo"));
 	}
 
 }

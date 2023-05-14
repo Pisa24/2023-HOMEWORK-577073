@@ -11,6 +11,8 @@ public class ComandoPosa implements Comando{
 	public ComandoPosa(String nomeAttrezzo) {
 		this.nomeAttrezzo = nomeAttrezzo;
 	}
+	public ComandoPosa() {
+	}
 
 	@Override
 	public void setParametro(String nomeAttrezzo) {

@@ -7,11 +7,16 @@ import org.junit.jupiter.api.Test;
 class LabirintoTest {
 	
 	private Labirinto lab;
+	
 
 	@BeforeEach
 	public void setUp() {
-		lab = new Labirinto();
-		lab.creaStanze();
+		lab = Labirinto.newBuilder()
+				.addStanzaIniziale("Atrio")
+				.addAttrezzo("martello", 3)
+				.addStanzaFinale("Biblioteca")
+				.addAdiacenza("Atrio", "Biblioteca", "nord")
+				.getLabirinto();
 	}
 	
 	@Test

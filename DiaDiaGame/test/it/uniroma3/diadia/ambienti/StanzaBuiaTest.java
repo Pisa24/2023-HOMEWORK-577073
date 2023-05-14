@@ -10,19 +10,24 @@ import it.uniroma3.diadia.attrezzi.Attrezzo;
 class StanzaBuiaTest {
 	private StanzaBuia buia;
 	private Stanza s;
-	private Attrezzo l;
+	private Attrezzo fonteDiLuce;
+	
 
 	@BeforeEach
 	void setUp() throws Exception {
-		buia = new StanzaBuia("buia","lanterna");
-		s = new Stanza("buia");
-		l = new Attrezzo("lanterna", 3);
-		s.addAttrezzo(l);
+		fonteDiLuce = new Attrezzo("lanterna", 3);
+		buia = new StanzaBuia("buia", "lanterna");
+		s = new Stanza("buia"); 
+		s.addAttrezzo(fonteDiLuce);
 	}
 
 	@Test
 	void testSenzaLanterna() {
-		assertEquals("qui c'è un buio pesto...", buia.getDescrizione());
+		System.out.println(buia.getDescrizione());
+		assertFalse(buia.hasAttrezzo("lanterna"));
+		String buio = "qui c'è un buio pesto... \n"
+				+ "Prova a trovare: " +this.fonteDiLuce.getNome();
+		assertEquals(buio, buia.getDescrizioneBuia());
 	}
 	
 	@Test
@@ -39,17 +44,5 @@ class StanzaBuiaTest {
 		assertEquals(s.getDescrizione(), buia.getDescrizione());
 	}
 	
-	@Test 
-	void testDescrizioneIsUguale() {
-		Attrezzo lanterna = new Attrezzo("lanterna", 3);
-		buia.addAttrezzo(lanterna);
-		//imposto un po di stanza vicine uguali per vedere se stampa la descrizione corretta
-		Stanza cinema = new Stanza("cinema");
-		buia.impostaStanzaAdiacente("nord", cinema);
-		s.impostaStanzaAdiacente("nord", cinema);
-		Stanza cameraCaffè = new Stanza("CameraCaffè");
-		buia.impostaStanzaAdiacente("ovest", cameraCaffè  );
-		s.impostaStanzaAdiacente("ovest", cameraCaffè);
-		
-	}
+
 }

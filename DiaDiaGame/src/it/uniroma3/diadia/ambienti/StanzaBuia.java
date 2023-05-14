@@ -6,11 +6,15 @@ package it.uniroma3.diadia.ambienti;
  */
 public class StanzaBuia extends Stanza{
 	private String fonteDiLuce;
-	private String buio = "qui c'è un buio pesto...";
 
-	public StanzaBuia(String nome, String fonteDiLux) {
+	public StanzaBuia(String nome, String fonteDiLuce) {
 		super(nome);
-		this.fonteDiLuce = fonteDiLux;
+		this.fonteDiLuce = fonteDiLuce;
+	}
+	
+	public String getDescrizioneBuia() {
+		return "qui c'è un buio pesto... \n"
+		+ "Prova a trovare: " + fonteDiLuce;
 	}
 
 	@Override
@@ -18,6 +22,6 @@ public class StanzaBuia extends Stanza{
 		if(super.hasAttrezzo(this.fonteDiLuce))
 			return super.getDescrizione();
 		else
-			return buio;
+			return getDescrizioneBuia();
 	}
 }
