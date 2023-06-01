@@ -1,0 +1,11 @@
+Stanze:Atrio,AulaN10,Mensa,Bar,Stanzino,LaboratorioCampus,AulaN11,Biblioteca,Giardino,AulaMagna
+Magica:Mensa
+Buia:Stanzino Bacchetta
+Bloccata:Giardino est Cacciavite, Atrio nord SantoGraal
+Inizio:Atrio
+Vincente:Biblioteca
+Mago:Bar MagoPastrocchio BuonSalve Bacchetta
+Cane:LaboratorioCampus Cagnotto WoofWoof
+Strega:AulaN11 Stregaccia HIHIhihi
+Attrezzi:Osso 2 Atrio,Lanterna 3 AulaN10,Piatto 1 Mensa,Cacciavite 1 Stanzino,Tazzina 1 Bar,Incudine 11 AulaN11,PistolaAdAcqua 2 Giardino,SantoGraal 7 AulaMagna,Arco 4 LaboratorioCampus
+Uscite:Atrio nord Biblioteca, Atrio sud AulaN10, Atrio est AulaN11, Atrio ovest LaboratorioCampus, Biblioteca sud Atrio, AulaN10 nord Atrio, AulaN10 sud Mensa, AulaN10 ovest LaboratorioCampus, AulaN10 est AulaN11, LaboratorioCampus ovest AulaN11, LaboratorioCampus sud Stanzino, LaboratorioCampus est Atrio, AulaN11 ovest Atrio, AulaN11 est LaboratorioCampus, AulaN11 nord Giardino, Stanzino nord LaboratorioCampus,Stanzino est Mensa, Mensa nord AulaN10, Mensa ovest Stanzino, Mensa sud Bar, Bar nord Mensa, Giardino sud AulaN11, Giardino est AulaMagna, AulaMagna ovest Giardino
